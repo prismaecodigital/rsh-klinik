@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO Setup -->
+    <title>Klinik RUKUN Medika Sentul | Dokter Umum, Gigi, Fisioterapi & Senior Care</title>
+    <meta name="description" content="Klinik RUKUN Medika Sentul menyediakan dokter umum, dokter gigi, IGD, vaksinasi, fisioterapi, & farmasi. Fasilitas ramah lansia & pengguna kursi roda, terintegrasi di kawasan RUKUN Senior Living CCRC. Senin–Sabtu 08.00–20.00.">
+    <meta name="keywords" content="Klinik Sentul, Klinik Babakan Madang, Klinik RUKUN Medika, Klinik Ramah Lansia Sentul, dokter umum Sentul, dokter gigi Sentul, fisioterapi lansia Sentul, klinik CCRC RUKUN">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Tailwind CSS (CDN) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            DEFAULT: '#2E99A3',
+                            light: '#EAF5F6',
+                            hover: '#247A83',
+                            dark: '#1C5E65'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 40px -2px rgba(46, 153, 163, 0.08)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Smooth font resizing transition */
+        html { transition: font-size 0.3s ease; font-size: 16px; }
+        
+        /* Modern details/summary styling */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        /* Tab transitions */
+        .tab-content { display: none; opacity: 0; transition: opacity 0.3s ease-in-out; }
+        .tab-content.active { display: block; opacity: 1; }
+        
+        /* Ensure big touch targets on mobile (WCAG AAA Inspired) */
+        button, a.btn { min-height: 48px; min-width: 48px; display: inline-flex; align-items: center; justify-content: center; }
+    </style>
+</head>
+<body class="bg-white text-slate-800 font-sans antialiased relative">
+
+    <!-- Gradient Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-brand opacity-10 blur-[120px] rounded-full"></div>
+        <div class="absolute top-[40%] right-[-5%] w-[400px] h-[400px] bg-brand opacity-[0.08] blur-[100px] rounded-full"></div>
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-lg border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2">
+                    <div class="w-10 h-10 bg-brand rounded-xl flex items-center justify-center text-white font-bold text-xl">R</div>
+                    <span class="font-bold text-xl text-slate-900 leading-tight">Klinik RUKUN<br><span class="text-brand text-sm font-semibold">Medika Sentul</span></span>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#beranda" class="text-slate-600 hover:text-brand font-medium">Beranda</a>
+                    <a href="#layanan" class="text-slate-600 hover:text-brand font-medium">Layanan</a>
+                    <a href="#dokter" class="text-slate-600 hover:text-brand font-medium">Dokter</a>
+                    <a href="#fasilitas" class="text-slate-600 hover:text-brand font-medium">Fasilitas Senior</a>
+                    <a href="#lokasi" class="text-slate-600 hover:text-brand font-medium">Lokasi</a>
+                </div>
+
+                <!-- Accessibility & Actions -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <div class="flex items-center bg-brand-light rounded-full p-1 border border-brand/20">
+                        <button onclick="changeFontSize(-1)" class="w-8 h-8 rounded-full flex items-center justify-center text-brand font-bold hover:bg-white" aria-label="Decrease font size">A-</button>
+                        <button onclick="changeFontSize(1)" class="w-8 h-8 rounded-full flex items-center justify-center text-brand font-bold hover:bg-white" aria-label="Increase font size">A+</button>
+                    </div>
+                    <a href="https://wa.me/6281310882505" class="btn bg-brand hover:bg-brand-hover text-white px-6 rounded-full font-semibold transition-colors shadow-lg shadow-brand/30 flex gap-2">
+                        <i data-lucide="message-circle" class="w-5 h-5"></i> WhatsApp Reservasi
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center gap-4">
+                    <button onclick="changeFontSize(1)" class="text-brand font-bold bg-brand-light w-10 h-10 rounded-full">A+</button>
+                    <button id="mobile-menu-btn" class="text-slate-900">
+                        <i data-lucide="menu" class="w-8 h-8"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 p-4 absolute w-full shadow-lg">
+            <div class="flex flex-col space-y-4 text-lg">
+                <a href="#layanan" class="font-medium text-slate-700">Layanan</a>
+                <a href="#dokter" class="font-medium text-slate-700">Dokter</a>
+                <a href="#fasilitas" class="font-medium text-slate-700">Fasilitas Senior</a>
+                <a href="#lokasi" class="font-medium text-slate-700">Lokasi</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="beranda" class="pt-16 pb-24 lg:pt-24 lg:pb-32 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <!-- Content -->
+                <div class="max-w-2xl">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-light text-brand font-semibold text-sm mb-6 border border-brand/20">
+                        <i data-lucide="award" class="w-4 h-4"></i> Akreditasi Paripurna Kemenkes RI
+                    </div>
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight mb-6">
+                        Layanan Kesehatan <span class="text-brand">Nyaman, Personal & Ramah Lansia</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Klinik RUKUN Medika menyediakan layanan kesehatan terpadu dan mudah diakses bagi masyarakat Sentul, Babakan Madang, serta pendukung fasilitas CCRC RUKUN Senior Living. Mulai dari Dokter Umum, Dokter Gigi, Tindakan Medis & IGD, Vaksinasi, Infus, Fisioterapi hingga Farmasi — hadir dalam satu lokasi yang nyaman dan ramah kursi roda.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="https://wa.me/6281310882505" class="btn bg-brand hover:bg-brand-hover text-white px-8 rounded-full font-bold text-lg transition-all shadow-lg shadow-brand/30 flex gap-2 w-full sm:w-auto">
+                            <i data-lucide="message-circle"></i> Reservasi via WhatsApp
+                        </a>
+                        <a href="#layanan" class="btn bg-white hover:bg-slate-50 text-slate-700 border-2 border-slate-200 px-8 rounded-full font-bold text-lg transition-all w-full sm:w-auto">
+                            Lihat Layanan Klinik
+                        </a>
+                    </div>
+                    <div class="flex items-center gap-4 text-sm font-medium text-slate-500">
+                        <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4 text-brand"></i> Senin–Sabtu | 08.00–20.00</span>
+                        <span class="hidden sm:flex items-center gap-1">•</span>
+                        <span class="flex items-center gap-1"><i data-lucide="check-circle" class="w-4 h-4 text-brand"></i> Bebas Antre & Pendampingan</span>
+                    </div>
+                </div>
+                
+                <!-- Image/Visual -->
+                <div class="relative">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand to-teal-300 rounded-[2rem] transform rotate-3 scale-105 opacity-20 blur-lg"></div>
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dokter melayani lansia" class="relative rounded-[2rem] shadow-2xl object-cover h-[500px] w-full border-4 border-white">
+                    
+                    <!-- Floating Badge -->
+                    <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                            <i data-lucide="shield-check" class="w-6 h-6"></i>
+                        </div>
+                        <div>
+                            <p class="text-xs text-slate-500 font-semibold uppercase tracking-wider">Terjamin</p>
+                            <p class="font-bold text-slate-900">Akreditasi Paripurna</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust & CCRC Section -->
+    <section class="py-20 bg-slate-50 border-y border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl font-bold text-slate-900 mb-4">Klinik Keluarga & Fasilitas Pendukung RUKUN Senior Living</h2>
+                <p class="text-lg text-slate-600">Berada di kawasan Darmawan Park, Sentul, kami melayani masyarakat umum dengan fasilitas yang dirancang khusus agar aman dan nyaman bagi lansia, pengguna kursi roda, serta pasien dengan keterbatasan mobilitas.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center text-brand mb-6">
+                        <i data-lucide="award" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Akreditasi Paripurna</h3>
+                    <p class="text-slate-600 leading-relaxed">Pengakuan mutu pelayanan kesehatan tertinggi dari Kementerian Kesehatan RI.</p>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center text-brand mb-6">
+                        <i data-lucide="wheelchair" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">100% Akses Ramp & Kursi Roda</h3>
+                    <p class="text-slate-600 leading-relaxed">Desain bebas hambatan tanpa anak tangga curam, dilengkapi area drop-off tepat di depan pintu masuk.</p>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white p-8 rounded-3xl shadow-soft border border-slate-100 hover:-translate-y-1 transition-transform">
+                    <div class="w-14 h-14 bg-brand-light rounded-2xl flex items-center justify-center text-brand mb-6">
+                        <i data-lucide="home" class="w-7 h-7"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Integrasi CCRC RUKUN</h3>
+                    <p class="text-slate-600 leading-relaxed">Penanganan medis terkoordinasi bagi penghuni senior living maupun warga masyarakat umum Sentul.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section (Interactive Tabs) -->
+    <section id="layanan" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-12 text-center">Layanan Kesehatan Terpadu</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <!-- Tab Buttons -->
+                <div class="w-full lg:w-1/3 flex flex-col gap-2" id="service-tabs">
+                    <button class="tab-btn active w-full text-left px-6 py-4 rounded-2xl font-bold text-lg transition-colors bg-brand text-white shadow-md" data-target="tab-umum">
+                        Dokter Umum & Geriatri
+                    </button>
+                    <button class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-semibold text-lg text-slate-600 hover:bg-slate-50 transition-colors" data-target="tab-gigi">
+                        Poli Gigi
+                    </button>
+                    <button class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-semibold text-lg text-slate-600 hover:bg-slate-50 transition-colors" data-target="tab-igd">
+                        IGD & Tindakan Medis
+                    </button>
+                    <button class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-semibold text-lg text-slate-600 hover:bg-slate-50 transition-colors" data-target="tab-fisio">
+                        Fisioterapi & Rehabilitasi
+                    </button>
+                    <button class="tab-btn w-full text-left px-6 py-4 rounded-2xl font-semibold text-lg text-slate-600 hover:bg-slate-50 transition-colors" data-target="tab-farmasi">
+                        Vaksinasi & Farmasi
+                    </button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div class="w-full lg:w-2/3">
+                    
+                    <!-- Dokter Umum -->
+                    <div id="tab-umum" class="tab-content active bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-brand text-white rounded-xl"><i data-lucide="stethoscope" class="w-8 h-8"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900">Dokter Umum & Layanan Geriatri</h3>
+                        </div>
+                        <p class="text-lg text-slate-600 mb-6">Konsultasi dan pemeriksaan kesehatan umum serta pemantauan kesehatan berkala bagi senior dan keluarga.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Konsultasi & Pemeriksaan Kesehatan Umum</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pemantauan Kesehatan Senior / Lansia (Geriatri)</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Medical Check-Up & Surat Keterangan Sehat</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pemeriksaan Tekanan Darah & Gula Darah</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Perawatan Luka, Nebulizer, Infus, & Suntik</li>
+                        </ul>
+                        <a href="https://wa.me/6281310882505?text=Halo%20Klinik%20RUKUN%20Medika,%20saya%20ingin%20konsultasi/buat%20janji%20Dokter%20Umum." class="btn bg-brand hover:bg-brand-hover text-white px-8 rounded-full font-bold text-lg inline-flex gap-2 w-full sm:w-auto shadow-md">
+                            <i data-lucide="calendar-plus"></i> Buat Janji Dokter Umum
+                        </a>
+                    </div>
+
+                    <!-- Poli Gigi -->
+                    <div id="tab-gigi" class="tab-content bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-brand text-white rounded-xl"><i data-lucide="smile" class="w-8 h-8"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900">Poli Gigi</h3>
+                        </div>
+                        <p class="text-lg text-slate-600 mb-6">Jaga kesehatan gigi dan mulut seluruh anggota keluarga dan senior bersama dokter gigi profesional kami.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pemeriksaan Gigi Rutin & Konsultasi</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pembersihan Karang Gigi (Scaling)</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Penambalan & Pencabutan Gigi</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pembuatan & Perawatan Gigi Tiruan (Gigi Palsu)</li>
+                        </ul>
+                        <a href="https://wa.me/6281310882505?text=Halo%20Klinik%20RUKUN%20Medika,%20saya%20ingin%20reservasi%20pemeriksaan%20Poli%20Gigi." class="btn bg-brand hover:bg-brand-hover text-white px-8 rounded-full font-bold text-lg inline-flex gap-2 w-full sm:w-auto shadow-md">
+                            <i data-lucide="calendar-plus"></i> Reservasi Dokter Gigi
+                        </a>
+                    </div>
+
+                    <!-- IGD & Tindakan -->
+                    <div id="tab-igd" class="tab-content bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-red-500 text-white rounded-xl"><i data-lucide="activity" class="w-8 h-8"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900">IGD & Tindakan Medis</h3>
+                        </div>
+                        <p class="text-lg text-slate-600 mb-6">Penanganan kondisi medis darurat sedang dan tindakan medis cepat selama jam operasional klinik.</p>
+                        <ul class="space-y-3 mb-6">
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Penanganan Awal Kondisi Medis & Observasi</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Perawatan Luka & Tindakan Medis Ringan</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Infus, Nebulizer, & Pertolongan Pertama</li>
+                        </ul>
+                        <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg mb-8">
+                            <p class="text-sm text-red-800 font-medium"><strong>Catatan Penting:</strong> Untuk kondisi kegawatdaruratan berat yang membutuhkan fasilitas rumah sakit lanjutan, tim kami siap memberikan penanganan awal dan mendampingi rujukan.</p>
+                        </div>
+                        <a href="tel:081310882505" class="btn bg-red-600 hover:bg-red-700 text-white px-8 rounded-full font-bold text-lg inline-flex gap-2 w-full sm:w-auto shadow-md shadow-red-500/30">
+                            <i data-lucide="phone-call"></i> Hubungi IGD Sekarang
+                        </a>
+                    </div>
+
+                    <!-- Fisioterapi -->
+                    <div id="tab-fisio" class="tab-content bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-brand text-white rounded-xl"><i data-lucide="person-standing" class="w-8 h-8"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900">Fisioterapi & Rehabilitasi Geriatri</h3>
+                        </div>
+                        <p class="text-lg text-slate-600 mb-6">Membantu memulihkan gerak, kelenturan, mobilitas, dan kemandirian aktivitas harian pasien serta lansia.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pemulihan Pasca Stroke & Pasca Operasi</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Terapi Nyeri Sendi, Otot, & Keseimbangan Lansia</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Latihan Gerak & Pencegahan Risiko Jatuh pada Senior</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Pemulihan Cedera & Gangguan Mobilitas</li>
+                        </ul>
+                        <a href="https://wa.me/6281310882505?text=Halo%20Klinik%20RUKUN%20Medika,%20saya%20ingin%20konsultasi%20layanan%20Fisioterapi." class="btn bg-brand hover:bg-brand-hover text-white px-8 rounded-full font-bold text-lg inline-flex gap-2 w-full sm:w-auto shadow-md">
+                            <i data-lucide="message-circle"></i> Konsultasi Fisioterapi
+                        </a>
+                    </div>
+
+                    <!-- Farmasi -->
+                    <div id="tab-farmasi" class="tab-content bg-slate-50 p-8 md:p-10 rounded-3xl border border-slate-100">
+                        <div class="flex items-center gap-4 mb-6">
+                            <div class="p-3 bg-brand text-white rounded-xl"><i data-lucide="pill" class="w-8 h-8"></i></div>
+                            <h3 class="text-2xl font-bold text-slate-900">Vaksinasi & Farmasi</h3>
+                        </div>
+                        <p class="text-lg text-slate-600 mb-6">Menyediakan vaksinasi keluarga/senior serta kebutuhan obat dasar yang mudah diakses.</p>
+                        <ul class="space-y-3 mb-8">
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Vaksinasi Influenza, Pneumonia, & Vaksin Rutin Lainnya</li>
+                            <li class="flex items-start gap-3 text-slate-700 font-medium"><i data-lucide="check" class="w-5 h-5 text-brand shrink-0 mt-0.5"></i> Penebusan Obat Klinik maupun Masyarakat Umum</li>
+                        </ul>
+                        <a href="https://wa.me/6281310882505?text=Halo%20Klinik%20RUKUN%20Medika,%20saya%20ingin%20menanyakan%20ketersediaan%20obat/vaksin..." class="btn bg-brand hover:bg-brand-hover text-white px-8 rounded-full font-bold text-lg inline-flex gap-2 w-full sm:w-auto shadow-md">
+                            <i data-lucide="search"></i> Cek Obat / Vaksin
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Schedule -->
+    <section id="dokter" class="py-20 bg-brand-light">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-10 text-center">Jadwal Dokter</h2>
+            
+            <div class="bg-white rounded-3xl shadow-soft overflow-hidden border border-brand/10">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-slate-50 border-b border-slate-100">
+                                <th class="p-6 font-bold text-slate-700 uppercase tracking-wider text-sm">Dokter</th>
+                                <th class="p-6 font-bold text-slate-700 uppercase tracking-wider text-sm">Spesialisasi</th>
+                                <th class="p-6 font-bold text-slate-700 uppercase tracking-wider text-sm">Jadwal Praktek</th>
+                                <th class="p-6 font-bold text-slate-700 uppercase tracking-wider text-sm">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-6 font-bold text-slate-900">dr. Susy Theresia, MMRs.</td>
+                                <td class="p-6 text-brand font-semibold">Dokter Umum</td>
+                                <td class="p-6 text-slate-600 font-medium">Senin – Sabtu: 08.00 – 14.00</td>
+                                <td class="p-6"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700"><span class="w-2 h-2 rounded-full bg-green-500"></span> Shift Pagi</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-6 font-bold text-slate-900">dr. Sumina Saleh</td>
+                                <td class="p-6 text-brand font-semibold">Dokter Umum</td>
+                                <td class="p-6 text-slate-600 font-medium">Senin – Sabtu: 14.00 – 20.00</td>
+                                <td class="p-6"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-green-100 text-green-700"><span class="w-2 h-2 rounded-full bg-green-500"></span> Shift Sore</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-6 font-bold text-slate-900">drg. Sinka Puji Yuninda, M.T.Kes</td>
+                                <td class="p-6 text-brand font-semibold">Dokter Gigi</td>
+                                <td class="p-6 text-slate-600 font-medium">Senin – Rabu: 08.00 – 14.00</td>
+                                <td class="p-6"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-slate-100 text-slate-600"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Terjadwal</span></td>
+                            </tr>
+                            <tr class="hover:bg-slate-50 transition-colors">
+                                <td class="p-6 font-bold text-slate-900">drg. Anggita Prawesti W</td>
+                                <td class="p-6 text-brand font-semibold">Dokter Gigi</td>
+                                <td class="p-6 text-slate-600 font-medium">Kamis – Jumat: 14.00 – 20.00</td>
+                                <td class="p-6"><span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-sm font-semibold bg-slate-100 text-slate-600"><i data-lucide="calendar" class="w-3.5 h-3.5"></i> Terjadwal</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-slate-50 p-4 border-t border-slate-100 text-center sm:text-left">
+                    <p class="text-sm text-slate-500 font-medium">* Catatan: Jadwal dokter dapat berubah sewaktu-waktu. Disarankan melakukan konfirmasi via WhatsApp sebelum berkunjung.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mengapa Memilih Kami & Fasilitas Senior -->
+    <section id="fasilitas" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-white to-slate-50 -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-slate-900 mb-4 text-center">Pendampingan Kesehatan Terpadu</h2>
+                <p class="text-lg text-slate-600 text-center">Lingkungan medis sabar, ramah, & bebas hambatan fisik bagi Senior & Penghuni CCRC.</p>
+            </div>
+            
+            <!-- 7 Pillars Grid -->
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">👨‍⚕️</span><h4 class="font-bold text-slate-900 mb-1">Dokter Berpengalaman</h4><p class="text-sm text-slate-600">Medis profesional & komunikatif.</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">⏳</span><h4 class="font-bold text-slate-900 mb-1">Antrean Minim</h4><p class="text-sm text-slate-600">Waktu tunggu yang terukur.</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">♿</span><h4 class="font-bold text-slate-900 mb-1">Akses Kursi Roda</h4><p class="text-sm text-slate-600">Nyaman untuk lansia & disabilitas.</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">❤️</span><h4 class="font-bold text-slate-900 mb-1">Pelayanan Personal</h4><p class="text-sm text-slate-600">Mengutamakan kenyamanan.</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">🏥</span><h4 class="font-bold text-slate-900 mb-1">1 Lokasi Terpadu</h4><p class="text-sm text-slate-600">Umum, gigi, fisio, IGD, farmasi.</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">🌳</span><h4 class="font-bold text-slate-900 mb-1">Asri & Parkir Luas</h4><p class="text-sm text-slate-600">Darmawan Park Sentul.</p></div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm border border-slate-100"><span class="text-3xl block mb-3">🏅</span><h4 class="font-bold text-slate-900 mb-1">Akreditasi Paripurna</h4><p class="text-sm text-slate-600">Standar mutu terjamin resmi.</p></div>
+            </div>
+
+            <!-- CCRC Highlights -->
+            <div class="bg-brand text-white rounded-[2rem] p-8 md:p-12 shadow-xl shadow-brand/20">
+                <h3 class="text-2xl font-bold mb-8 text-center border-b border-white/20 pb-6">Aksesibilitas & Fasilitas Senior</h3>
+                <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-6 text-center">
+                    <div class="flex flex-col items-center"><div class="bg-white/20 p-4 rounded-full mb-4"><i data-lucide="wheelchair" class="w-8 h-8"></i></div><span class="font-semibold text-lg">Ramp Kursi Roda Luas</span></div>
+                    <div class="flex flex-col items-center"><div class="bg-white/20 p-4 rounded-full mb-4"><i data-lucide="car" class="w-8 h-8"></i></div><span class="font-semibold text-lg">Drop-off Depan Pintu</span></div>
+                    <div class="flex flex-col items-center"><div class="bg-white/20 p-4 rounded-full mb-4"><i data-lucide="door-open" class="w-8 h-8"></i></div><span class="font-semibold text-lg">Pintu Wide-Opening</span></div>
+                    <div class="flex flex-col items-center"><div class="bg-white/20 p-4 rounded-full mb-4"><i data-lucide="heart-handshake" class="w-8 h-8"></i></div><span class="font-semibold text-lg">Pemeriksaan Tanpa Tergesa</span></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 mb-10 text-center">Pertanyaan Sering Diajukan (FAQ)</h2>
+            <div class="space-y-4">
+                
+                <details class="group bg-slate-50 border border-slate-100 rounded-2xl open:bg-brand-light transition-colors">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-slate-900 group-open:text-brand">
+                        <span>Apakah Klinik RUKUN Medika terbuka untuk masyarakat umum?</span>
+                        <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                    </summary>
+                    <div class="text-slate-600 pb-6 px-6 leading-relaxed">
+                        Ya, kami terbuka untuk seluruh masyarakat umum Sentul, Babakan Madang, Bogor, serta penghuni kawasan RUKUN Senior Living.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-100 rounded-2xl open:bg-brand-light transition-colors">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-slate-900 group-open:text-brand">
+                        <span>Apakah fasilitas klinik ramah untuk lansia dan pengguna kursi roda?</span>
+                        <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                    </summary>
+                    <div class="text-slate-600 pb-6 px-6 leading-relaxed">
+                        Sangat ramah. Seluruh fasilitas klinik berada di area tanpa anak tangga curam, dilengkapi ramp kursi roda, toilet ramah lansia, dan tim medis yang terbiasa mendampingi senior.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-100 rounded-2xl open:bg-brand-light transition-colors">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-slate-900 group-open:text-brand">
+                        <span>Apakah Klinik RUKUN Medika menerima BPJS Kesehatan?</span>
+                        <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                    </summary>
+                    <div class="text-slate-600 pb-6 px-6 leading-relaxed">
+                        Saat ini Klinik RUKUN Medika belum melayani pasien BPJS Kesehatan (melayani pasien umum dan privat).
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-100 rounded-2xl open:bg-brand-light transition-colors">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-slate-900 group-open:text-brand">
+                        <span>Bagaimana cara reservasi jadwal Dokter Gigi atau Fisioterapi?</span>
+                        <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                    </summary>
+                    <div class="text-slate-600 pb-6 px-6 leading-relaxed">
+                        Anda dapat dengan mudah mendaftar melalui WhatsApp ke 0813-1088-2505 agar waktu tunggu di klinik lebih efisien.
+                    </div>
+                </details>
+
+                <details class="group bg-slate-50 border border-slate-100 rounded-2xl open:bg-brand-light transition-colors">
+                    <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-6 text-slate-900 group-open:text-brand">
+                        <span>Apakah farmasi klinik dapat digunakan oleh masyarakat umum?</span>
+                        <span class="transition group-open:rotate-180"><i data-lucide="chevron-down" class="w-5 h-5"></i></span>
+                    </summary>
+                    <div class="text-slate-600 pb-6 px-6 leading-relaxed">
+                        Ya, farmasi terbuka untuk umum. Karena stok obat tertentu dapat terbatas, Anda disarankan melakukan konfirmasi ketersediaan obat via WhatsApp terlebih dahulu.
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location & Map -->
+    <section id="lokasi" class="py-20 bg-slate-50 border-t border-slate-100 pb-32 md:pb-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-8 items-center bg-white rounded-3xl p-4 md:p-8 shadow-soft border border-slate-100">
+                <!-- Map iframe placeholder (replace src with real embed link) -->
+                <div class="rounded-2xl overflow-hidden h-[400px] bg-slate-200">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.029815858607!2d106.87768431526437!3d-6.559981895254179!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c73336709849%3A0x6b772c916298ed29!2sKlinik%20Rukun%20Medika!5e0!3m2!1sen!2sid!4v1680000000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                <!-- Contact Info -->
+                <div class="p-4 md:p-8">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Klinik RUKUN Medika</h2>
+                    
+                    <div class="space-y-6 mb-8">
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 text-brand"><i data-lucide="map-pin" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Alamat Lengkap</h4>
+                                <p class="text-slate-600 mt-1">Kawasan Darmawan Park, Jl. Babakan Madang No. 99, Sentul Selatan, Bogor 16810</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 text-brand"><i data-lucide="clock" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Jam Operasional</h4>
+                                <p class="text-slate-600 mt-1">Senin – Sabtu | 08.00 – 20.00 WIB</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4 items-start">
+                            <div class="mt-1 text-brand"><i data-lucide="car" class="w-6 h-6"></i></div>
+                            <div>
+                                <h4 class="font-bold text-slate-900">Info Area Parkir</h4>
+                                <p class="text-slate-600 mt-1">Tersedia Area Drop-Off Lansia & Parkir Luas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="https://maps.google.com/?q=Klinik+Rukun+Medika+Sentul" target="_blank" rel="noopener noreferrer" class="btn bg-slate-900 hover:bg-slate-800 text-white px-6 py-3 rounded-xl font-bold text-center transition-colors flex justify-center gap-2">
+                            <i data-lucide="navigation"></i> Buka Maps
+                        </a>
+                        <a href="tel:081310882505" class="btn bg-white hover:bg-slate-50 text-slate-800 border-2 border-slate-200 px-6 py-3 rounded-xl font-bold text-center transition-colors flex justify-center gap-2">
+                            <i data-lucide="phone"></i> 0813-1088-2505
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-10 text-center pb-32 md:pb-10">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>&copy; 2026 Klinik RUKUN Medika Sentul. All rights reserved.</p>
+            <p class="mt-2 text-sm">Instagram: <a href="https://instagram.com/klinik_rukunmedika" class="text-brand hover:text-white transition-colors">@klinik_rukunmedika</a></p>
+        </div>
+    </footer>
+
+    <!-- Mobile Floating Action Bar -->
+    <div class="md:hidden fixed bottom-0 left-0 w-full z-50 bg-white border-t border-slate-200 shadow-[0_-4px_20px_rgba(0,0,0,0.05)] p-2">
+        <div class="grid grid-cols-2 gap-2">
+            <a href="tel:081310882505" class="btn flex flex-col items-center justify-center bg-slate-50 text-slate-800 rounded-xl py-2 active:bg-slate-100">
+                <i data-lucide="phone" class="w-5 h-5 mb-1"></i>
+                <span class="text-xs font-bold">Telepon</span>
+            </a>
+            <a href="https://wa.me/6281310882505" class="btn flex flex-col items-center justify-center bg-brand text-white rounded-xl py-2 active:bg-brand-hover shadow-md">
+                <i data-lucide="message-circle" class="w-5 h-5 mb-1"></i>
+                <span class="text-xs font-bold">WhatsApp</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Initialization Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        if (window.lucide) lucide.createIcons();
+
+        // Font Size Accessibility Toggle Logic
+        let fontMultiplier = 1;
+        function changeFontSize(step) {
+            fontMultiplier += (step * 0.1);
+            if(fontMultiplier < 0.9) fontMultiplier = 0.9;
+            if(fontMultiplier > 1.3) fontMultiplier = 1.3;
+            document.documentElement.style.fontSize = `${16 * fontMultiplier}px`;
+        }
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Tabs Logic for Services
+        const tabBtns = document.querySelectorAll('.tab-btn');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active classes
+                tabBtns.forEach(b => {
+                    b.classList.remove('bg-brand', 'text-white', 'shadow-md');
+                    b.classList.add('text-slate-600', 'hover:bg-slate-50');
+                });
+                tabContents.forEach(c => c.classList.remove('active'));
+
+                // Add active to clicked
+                btn.classList.remove('text-slate-600', 'hover:bg-slate-50');
+                btn.classList.add('bg-brand', 'text-white', 'shadow-md');
+                
+                // Show content
+                const targetId = btn.getAttribute('data-target');
+                document.getElementById(targetId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

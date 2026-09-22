@@ -1,88 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Under Construction</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background: #0f172a;
-            color: #e2e8f0;
-            padding: 1.5rem;
-        }
-
-        .container {
-            text-align: center;
-            max-width: 32rem;
-            width: 100%;
-        }
-
-        .icon {
-            font-size: 3.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        h1 {
-            font-size: 1.875rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-        }
-
-        p {
-            color: #94a3b8;
-            margin-bottom: 2rem;
-            line-height: 1.6;
-        }
-
-        .progress-track {
-            width: 100%;
-            height: 0.5rem;
-            background: #1e293b;
-            border-radius: 9999px;
-            overflow: hidden;
-        }
-
-        .progress-bar {
-            height: 100%;
-            width: 40%;
-            border-radius: 9999px;
-            background: linear-gradient(90deg, #38bdf8, #818cf8);
-            animation: build 2.5s ease-in-out infinite;
-        }
-
-        @keyframes build {
-            0%   { width: 15%; }
-            50%  { width: 75%; }
-            100% { width: 15%; }
-        }
-
-        .note {
-            margin-top: 1.5rem;
-            font-size: 0.875rem;
-            color: #64748b;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare three AI-generated landing page concepts for Klinik RUKUN Medika.">
+  <title>AI Website Preview | Klinik RUKUN Medika</title>
+  <style>
+    :root { color-scheme: light; --ink: #16363c; --muted: #64748b; --brand: #2e99a3; --line: #dbe4e6; --surface: #fff; --bg: #f2f7f7; }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body { display: grid; grid-template-rows: auto 1fr; min-height: 100vh; background: var(--bg); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    button, a { font: inherit; }
+    .toolbar { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px clamp(16px, 3vw, 36px); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.96); box-shadow: 0 8px 30px rgba(22,54,60,.08); }
+    .heading { min-width: 0; }
+    .eyebrow { margin: 0 0 3px; color: var(--brand); font-size: 11px; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+    h1 { margin: 0; font-size: clamp(17px, 2vw, 22px); line-height: 1.2; }
+    .tabs { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .tab, .open { min-height: 42px; border-radius: 11px; font-weight: 750; cursor: pointer; transition: .2s ease; }
+    .tab { border: 1px solid var(--line); background: var(--surface); color: #475569; padding: 8px 15px; }
+    .tab:hover { border-color: #8bc9ce; color: var(--brand); }
+    .tab[aria-selected="true"] { border-color: var(--brand); background: var(--brand); color: #fff; box-shadow: 0 7px 18px rgba(46,153,163,.2); }
+    .open { display: inline-flex; align-items: center; border: 1px solid #b9dadd; color: #226872; padding: 8px 14px; text-decoration: none; }
+    .open:hover { background: #eefafa; }
+    .preview { position: relative; min-height: 0; }
+    iframe { display: block; width: 100%; height: 100%; border: 0; background: #fff; }
+    .loading { position: absolute; inset: 0; display: grid; place-items: center; background: var(--bg); color: var(--muted); font-weight: 650; pointer-events: none; transition: opacity .2s; }
+    .loading.hidden { opacity: 0; }
+    @media (max-width: 760px) {
+      body { grid-template-rows: auto minmax(70vh, 1fr); }
+      .toolbar { align-items: stretch; flex-direction: column; gap: 12px; }
+      .tabs { display: grid; grid-template-columns: repeat(3, 1fr); }
+      .tab { padding-inline: 8px; }
+      .open { grid-column: 1 / -1; justify-content: center; }
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <div class="icon">🚧</div>
-        <h1>We're Building Something</h1>
-        <p>This website is currently under construction. Please check back soon — we're working hard to bring you something great.</p>
-        <div class="progress-track">
-            <div class="progress-bar"></div>
-        </div>
-        <div class="note">Coming soon</div>
+  <header class="toolbar">
+    <div class="heading">
+      <p class="eyebrow">Comparison workspace</p>
+      <h1>RUKUN Medika AI Website Previews</h1>
     </div>
+    <nav class="tabs" role="tablist" aria-label="Choose a website version">
+      <button class="tab" id="tab-chatgpt" type="button" role="tab" aria-selected="true" aria-controls="site-preview" data-page="chatgpt.html">ChatGPT</button>
+      <button class="tab" id="tab-claude" type="button" role="tab" aria-selected="false" aria-controls="site-preview" data-page="claude.html">Claude</button>
+      <button class="tab" id="tab-gemini" type="button" role="tab" aria-selected="false" aria-controls="site-preview" data-page="gemini.html">Gemini</button>
+      <a class="open" id="open-page" href="chatgpt.html" target="_blank" rel="noopener noreferrer">Open full page ↗</a>
+    </nav>
+  </header>
+  <main class="preview">
+    <div class="loading" id="loading" role="status">Loading ChatGPT preview…</div>
+    <iframe id="site-preview" name="site-preview" src="chatgpt.html" title="ChatGPT website preview"></iframe>
+  </main>
+  <script>
+    const preview = document.getElementById('site-preview');
+    const loading = document.getElementById('loading');
+    const openPage = document.getElementById('open-page');
+    const tabs = [...document.querySelectorAll('[role="tab"]')];
+
+    function showPreview(tab) {
+      const name = tab.textContent.trim();
+      tabs.forEach(item => item.setAttribute('aria-selected', String(item === tab)));
+      loading.textContent = `Loading ${name} preview…`;
+      loading.classList.remove('hidden');
+      preview.title = `${name} website preview`;
+      preview.src = tab.dataset.page;
+      openPage.href = tab.dataset.page;
+      history.replaceState(null, '', `#${name.toLowerCase()}`);
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => showPreview(tab));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+        event.preventDefault();
+        const offset = event.key === 'ArrowRight' ? 1 : -1;
+        const next = tabs[(index + offset + tabs.length) % tabs.length];
+        next.focus();
+        showPreview(next);
+      });
+    });
+
+    preview.addEventListener('load', () => loading.classList.add('hidden'));
+    const selected = tabs.find(tab => `#${tab.textContent.trim().toLowerCase()}` === location.hash);
+    if (selected) showPreview(selected);
+  </script>
 </body>
 </html>
